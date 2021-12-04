@@ -1,0 +1,71 @@
+
+<!-- Etablis un lien entre multiple_predict.html et home.html. -->
+{% extends "home.html" %}
+
+{% block multiple_predict %}
+
+<div class="d-flex justify-content-center"">
+    <p class="fw-bold">Prediction Multiple</p>
+</div>
+
+<form action="{{url_for('multiple_predict')}}" method="post" class="mt-5 container mx-auto col-12" style="width: 1000px;">
+    <!--- Nombre d'individus --->
+    <div class="mb-3">
+        <label for="individu" class="form-label fw-bold">Entrez le nombre d'individus à prédire</label>
+        <input type="text" class="form-control" id="individu" name="individu" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-5">Predict</button>
+</form>
+
+<div class="card mb-5" style="width: 1000px;">
+    <div class="card-body h5 fw-bold d-flex justify-content-center text-center">
+        {{error}}
+    </div>
+</div>
+
+<!-- Table de prédiction -->
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th scope="col">AGE</th>
+                    <th scope="col">SEXE</th>
+                    <th scope="col">TDT</th>
+                    <th scope="col">PAR</th>
+                    <th scope="col">CHOLESTEROL</th>
+                    <th scope="col">GAJ</th>
+                    <th scope="col">ECG</th>
+                    <th scope="col">FCMAX</th>
+                    <th scope="col">ANGINE</th>
+                    <th scope="col">DEPRESSION</th>
+                    <th scope="col">PENTE</th>
+                    <th scope="col">PREDICTION</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                {% for i in j %}
+                <tr>
+                    <td>{{ row[i][0] }}</td>
+                    <td>{{ row[i][1] }}</td>
+                    <td>{{ row[i][2] }}</td>
+                    <td>{{ row[i][3] }}</td>
+                    <td>{{ row[i][4] }}</td>
+                    <td>{{ row[i][5] }}</td>
+                    <td>{{ row[i][6] }}</td>
+                    <td>{{ row[i][7] }}</td>
+                    <td>{{ row[i][8] }}</td>
+                    <td>{{ row[i][9] }}</td>
+                    <td>{{ row[i][10] }}</td>
+                    
+                    <td>{{ retour[i] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
